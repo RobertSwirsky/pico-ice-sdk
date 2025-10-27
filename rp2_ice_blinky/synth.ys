@@ -1,0 +1,4 @@
+read_verilog /home/swirsky/Documents/repos/my-examples/rp2_ice_blinky/top.v  
+synth_ice40 -abc9 -top top
+delete t:$scopeinfo
+write_json bitstream.json
