@@ -1,0 +1,6 @@
+[submodule "rp2_ice_blinky/pico-sdk"]
+	path = rp2_ice_blinky/pico-sdk
+	url = https://github.com/raspberrypi/pico-sdk
+[submodule "rp2_ice_blinky/pico-ice-sdk"]
+	path = rp2_ice_blinky/pico-ice-sdk
+	url = https://github.com/tinyvision-ai-inc/pico-ice-sdk
