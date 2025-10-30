@@ -15,13 +15,13 @@
 		// Switch input is different than internal switch value, so an input is
 		// changing.  Increase the counter until it is stable for enough time.  
 		if (i_Switch !== r_State && r_Count < c_DEBOUNCE_LIMIT)
-		r_Count <= r_Count + 1;
+			r_Count <= r_Count + 1;
 	
 		// End of counter reached, switch is stable, register it, reset counter
 		else if (r_Count == c_DEBOUNCE_LIMIT)
 		begin
-		r_State <= i_Switch;
-		r_Count <= 0;
+			r_State <= i_Switch;
+			r_Count <= 0;
 		end 
 	
 		// Switches are the same state, reset the counter
@@ -68,9 +68,17 @@
 			r_Switch_u <= w_Switch_u
 
 			if (w_Switch_u == 1'b0 && r_Switch_u == 1'b0)
-				count <= (count == 4'd15) ? 4'b0 : count + 1;    // count up (mod 16);
-			if (w_Switch_d == 1'b0 && r_Switch_d == 1'b0)
-				count <= (count == 4'd0) ? 4'b1111 : count - 1;  // count down (mod 16)
+				begin
+					count <= (count == 4'd15) ? 4'b0 : count + 1;    // count up (mod 16);
+				end
+			else if (w_Switch_d == 1'b0 && r_Switch_d == 1'b0)
+				begin
+					count <= (count == 4'd0) ? 4'b1111 : count - 1;  // count down (mod 16)
+				end
+			else 
+				begin 
+					count <= count
+				end
 	    end
 
 		assign display = count
